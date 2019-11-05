@@ -26,7 +26,15 @@ function loadChunks() {
   } catch (e) {
     numberedChunks = e.message;
   }
-  return { buildId, manifest, chunkDir, numberedChunks };
+
+  let rootFiles;
+  try {
+    rootFiles = fs.readdirSync(process.cwd());
+  } catch (e) {
+    rootFiles = e.message;
+  }
+
+  return { buildId, manifest, chunkDir, numberedChunks, rootFiles };
 }
 
 export default (req, res) => {
