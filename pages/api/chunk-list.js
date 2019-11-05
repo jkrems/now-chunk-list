@@ -41,7 +41,14 @@ function loadChunks() {
     nextFiles = e.message;
   }
 
-  return { buildId, manifest, chunkDir, numberedChunks, rootFiles, nextFiles };
+  let serverlessFiles;
+  try {
+    serverlessFiles = fs.readdirSync(path.join(process.cwd(), '.next', 'serverless'));
+  } catch (e) {
+    serverlessFiles = e.message;
+  }
+
+  return { buildId, manifest, chunkDir, numberedChunks, rootFiles, nextFiles, serverlessFiles };
 }
 
 export default (req, res) => {
