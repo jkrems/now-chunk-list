@@ -1,20 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
-function loadJSON(...segments) {
-  return JSON.parse(fs.readFileSync(path.resolve(process.cwd(), ...segments), 'utf8'));
-}
-
 function loadChunks() {
   let buildId = 'development';
   try {
-    buildId = fs.readFileSync(path.resolve(process.cwd(), '.next', 'BUILD_ID'), 'utf8');
+    buildId = fs.readFileSync('.next/BUILD_ID', 'utf8');
   } catch (e) {
     if (e.code !== 'ENOENT') throw e;
   }
   let manifest;
   try {
-    manifest = loadJSON('.next', 'build-manifest.json');
+    manifest = JSON.parse(fs.readFileSync('.next/build-manifest.json', 'utf8'));
   } catch (e) {
     manifest = e.message;
   }
@@ -22,7 +18,7 @@ function loadChunks() {
   const chunkDir = path.resolve(process.cwd(), '.next', 'static', 'chunks');
   let numberedChunks;
   try {
-    numberedChunks = fs.readdirSync(chunkDir).filter(filename => filename.endsWith('.js'));
+    numberedChunks = fs.readdirSync('.next/static/chunks').filter(filename => filename.endsWith('.js'));
   } catch (e) {
     numberedChunks = e.message;
   }
