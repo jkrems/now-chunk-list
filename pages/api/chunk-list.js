@@ -1,21 +1,22 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 function loadChunks() {
   let buildId = 'development';
   try {
-    buildId = fs.readFileSync('.next/BUILD_ID', 'utf8');
+    buildId = fs.readFileSync(path.resolve('.next/BUILD_ID'), 'utf8');
   } catch (e) {
     if (e.code !== 'ENOENT') throw e;
   }
   let manifest;
   try {
-    manifest = JSON.parse(fs.readFileSync('.next/build-manifest.json', 'utf8'));
+    manifest = JSON.parse(fs.readFileSync(path.resolve('.next/build-manifest.json'), 'utf8'));
   } catch (e) {
     manifest = e.message;
   }
 
-  const chunkDir = path.resolve(process.cwd(), '.next', 'static', 'chunks');
+  const chunkDir = path.resolve('.next/static/chunks');
+  fs.statSync(chunkDir);
   let numberedChunks;
   try {
     numberedChunks = fs.readdirSync('.next/static/chunks').filter(filename => filename.endsWith('.js'));

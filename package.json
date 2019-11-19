@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "next": "9.1.2",
+    "next-dynamic-bundle": "^0.0.0-pre.13",
     "react": "16.11.0",
     "react-dom": "16.11.0"
   }

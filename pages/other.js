@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 
 export default () => {
   useEffect(() => {
-    import('../lib/helpers-index').then(console.log);
+    import('../lib/helpers-other').then(console.log);
   });
   return <div>Some Content</div>
 }

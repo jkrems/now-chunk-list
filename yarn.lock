@@ -815,6 +815,26 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@types/prop-types@*":
+  version "15.7.3"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
+  integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
+
+"@types/react-dom@^16.9.4":
+  version "16.9.4"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.4.tgz#0b58df09a60961dcb77f62d4f1832427513420df"
+  integrity sha512-fya9xteU/n90tda0s+FtN5Ym4tbgxpq/hb/Af24dvs6uYnYn+fspaxw5USlw0R8apDNwxsqumdRoCoKitckQqw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^16.9.11":
+  version "16.9.11"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.11.tgz#70e0b7ad79058a7842f25ccf2999807076ada120"
+  integrity sha512-UBT4GZ3PokTXSWmdgC/GeCGEJXE5ofWyibCcecRLUVN2ZBpXQGVgQGtG2foS7CrTKFKlQVVswLvf7Js6XA/CVQ==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -1136,6 +1156,11 @@ assert@^1.1.1:
   dependencies:
     object-assign "^4.1.1"
     util "0.10.3"
+
+asset-assembler@^0.0.0-pre.13:
+  version "0.0.0-pre.13"
+  resolved "https://registry.yarnpkg.com/asset-assembler/-/asset-assembler-0.0.0-pre.13.tgz#6de68628b7d2fd7f5dbf95a01939c6d2ffc56e0c"
+  integrity sha512-3d4JSa3rZyGE+7TJIDJROb6O8NaSNxi5PPHYZeDVpcBNgCzAD1Dc7iXYlqMHcBE78zix/MFQyPtYQrtK1CW1Ww==
 
 assign-symbols@^1.0.0:
   version "1.0.0"
@@ -1894,6 +1919,11 @@ cssnano-simple@1.0.0:
   dependencies:
     cssnano-preset-simple "^1.0.0"
     postcss "^7.0.18"
+
+csstype@^2.2.0:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.7.tgz#20b0024c20b6718f4eda3853a1f5a1cce7f5e4a5"
+  integrity sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -3344,6 +3374,16 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
+
+next-dynamic-bundle@^0.0.0-pre.13:
+  version "0.0.0-pre.13"
+  resolved "https://registry.yarnpkg.com/next-dynamic-bundle/-/next-dynamic-bundle-0.0.0-pre.13.tgz#73e439ec1a1f9d0cd6cd1b1c8cdc6f5bd474a53a"
+  integrity sha512-wjc3kCGorfoASaM1alX/hkMdiFN05Rt8trs2u3J5d9O1iFqR2yXyg59FBFF9fQIS0QXm++yzH9tjiHXSWkDndQ==
+  dependencies:
+    "@types/react" "^16.9.11"
+    "@types/react-dom" "^16.9.4"
+    asset-assembler "^0.0.0-pre.13"
+    webpack-dynamic-bundle-plugin "^0.0.0-pre.13"
 
 next@9.1.2:
   version "9.1.2"
@@ -5363,6 +5403,13 @@ webpack-dev-middleware@3.7.0:
     mime "^2.4.2"
     range-parser "^1.2.1"
     webpack-log "^2.0.0"
+
+webpack-dynamic-bundle-plugin@^0.0.0-pre.13:
+  version "0.0.0-pre.13"
+  resolved "https://registry.yarnpkg.com/webpack-dynamic-bundle-plugin/-/webpack-dynamic-bundle-plugin-0.0.0-pre.13.tgz#629e4d1eccde819196d37484e40faa6e3f310684"
+  integrity sha512-Yhua77NdUv/Spgw7aO8Ua9a5aUe2ZhgoBWsMlEHP2Aza6SP5IdAGBDrE5latFZCD51GT6JPEBmxFQR28BRzWpg==
+  dependencies:
+    asset-assembler "^0.0.0-pre.13"
 
 webpack-hot-middleware@2.25.0:
   version "2.25.0"
