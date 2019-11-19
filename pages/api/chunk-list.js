@@ -16,7 +16,11 @@ function loadChunks() {
   }
 
   const chunkDir = path.resolve('.next/static/chunks');
-  fs.statSync(chunkDir);
+  try {
+    fs.statSync(chunkDir);
+  } catch (e) {
+    /* ignored */
+  }
   let numberedChunks;
   try {
     numberedChunks = fs.readdirSync('.next/static/chunks').filter(filename => filename.endsWith('.js'));
