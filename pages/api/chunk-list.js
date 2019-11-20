@@ -11,6 +11,12 @@ try {
     require('../../../../../../lib/touch-assets');
   } catch (e) {
     if (e.code !== 'MODULE_NOT_FOUND') throw e;
+    try {
+      // From the *serverless* compiled directory
+      require('../../../../lib/touch-assets');
+    } catch (e) {
+      if (e.code !== 'MODULE_NOT_FOUND') throw e;
+    }
   }
 }
 

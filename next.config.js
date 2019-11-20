@@ -16,7 +16,7 @@ function merge(target, overrides) {
 }
 
 module.exports = withDynamicBundle({prefix: '/api/chunks'})({
-  // target: 'serverless',
+  target: 'experimental-serverless-trace',
   experimental: {
     granularChunks: true,
   },
@@ -27,14 +27,14 @@ module.exports = withDynamicBundle({prefix: '/api/chunks'})({
    */
   webpack(config, { isServer, dev /*, webpack */ }) {
     if (isServer) {
-      config.externals = [
-        function(context, request, callback) {
-          if (/\.\.\/lib\/touch-assets$/.test(request)) {
-            return callback(null, 'commonjs ' + request);
-          }
-          callback();
-        },
-      ].concat(config.externals);
+      const fnIdx = config.externals.findIndex(value => typeof value === 'function');
+      const oldFn = config.externals[fnIdx];
+      config.externals[fnIdx] = function(context, request, callback) {
+        if (/\.\.\/lib\/touch-assets$/.test(request)) {
+          return callback(null, 'commonjs ' + request);
+        }
+        oldFn(context, request, callback);
+      };
       return config;
     }
 
