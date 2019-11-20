@@ -1,6 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+try {
+  // From the current directory
+  require('../../lib/touch-assets');
+} catch (e) {
+  if (e.code !== 'MODULE_NOT_FOUND') throw e;
+  try {
+    // From the compiled directory
+    require('../../../../../../lib/touch-assets');
+  } catch (e) {
+    if (e.code !== 'MODULE_NOT_FOUND') throw e;
+  }
+}
+
 function loadChunks() {
   let buildId = 'development';
   try {

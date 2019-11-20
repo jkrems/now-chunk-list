@@ -16,6 +16,7 @@ function merge(target, overrides) {
 }
 
 module.exports = withDynamicBundle({prefix: '/api/chunks'})({
+  // target: 'serverless',
   experimental: {
     granularChunks: true,
   },
@@ -25,7 +26,19 @@ module.exports = withDynamicBundle({prefix: '/api/chunks'})({
    * @param {*} context
    */
   webpack(config, { isServer, dev /*, webpack */ }) {
-    if (isServer || dev) return config;
+    if (isServer) {
+      config.externals = [
+        function(context, request, callback) {
+          if (/\.\.\/lib\/touch-assets$/.test(request)) {
+            return callback(null, 'commonjs ' + request);
+          }
+          callback();
+        },
+      ].concat(config.externals);
+      return config;
+    }
+
+    if (dev) return config;
 
     merge(config.optimization.splitChunks, {
       // Disable built-in next.js cache groups (e.g. commons)
